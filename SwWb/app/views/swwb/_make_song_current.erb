@@ -1,0 +1,15 @@
+<!-- Begin _make_song_current.erb -->
+  <form method="POST" action="/songs/<%= song.id %>">
+    <input name="_method" type="hidden" value="PUT">
+
+    <div class="list-title-label">
+      <% if song.title.to_s == "" %>
+        Title: No title for this song
+      <% else %>
+        Title: <i><%= song.title %></i>
+      <% end %>
+    </div>
+    <input type="submit" name="make-current" value ="Set as Current Song">
+    <br/>
+  </form>
+<!-- End _make_song_current.erb -->

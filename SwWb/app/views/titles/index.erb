@@ -1,0 +1,38 @@
+<%= render :partial => "layouts/header" %>
+
+      <div class='content'>
+
+        <h2><%= @page_title %></h2>
+
+        &raquo; Song titles listed in alphabetical order.
+
+        <br/><br/><br/>
+        <a href="/titles/new">Add Song Title</a>
+        <br/><br/><br/>
+
+        <% if @titles.empty? %>
+          No song titles exist
+        <% else %>
+
+          <table class="song-title-table" border="1" cellpadding="4">
+            <tr class="song-title-tr">
+              <th>Title</th>
+              <%= table_column_header @logged_in_user %>
+              <%= table_column_header @logged_in_user %>
+            </tr>
+
+            <%# ### Todo: Make use of checkbox for void field %>
+            <% for title in @titles %>
+              <tr class="song-title-tr">
+                <%= table_title title.title, title.void %>
+                <%= table_data_link @logged_in_user, title, "Edit" %>
+                <%= table_data_link @logged_in_user, title, "Delete" %>
+              </tr>
+            <% end %>
+          </table>
+
+        <% end %>
+
+      </div>
+
+<%= render :partial => "layouts/footer" %>

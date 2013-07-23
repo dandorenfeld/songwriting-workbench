@@ -1,0 +1,16 @@
+<%= render :partial => "layouts/errors", :locals => { :object => @title } %>
+
+<%= render :partial => "layouts/header" %>
+
+      <div class='content'>
+        <h2><%= @page_title %></h2>
+
+        <form method="POST" action="/titles">
+
+<%= render :partial => "modify_title", :locals => { :padding => "195px;",
+           :submit_name => "create", :submit_value => "Create Title" } %>
+
+        </form>
+      </div>
+
+<%= render :partial => "layouts/footer" %>

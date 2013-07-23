@@ -1,0 +1,44 @@
+<%= render :partial => "layouts/header" %>
+
+      <div class='content'>
+
+        <h2><%= @page_title %></h2>
+
+        &raquo;
+          Select content of verse to view, &nbsp;verses ordered by date created.
+        <br/><br/><br/>
+
+        <div class="list-verse">
+          <% if @verses.empty? %>
+            No verses exist
+          <% end %>
+
+          <% for verse in @verses %>
+            <div class="list-verse-label">Tag:</div>
+            <% if verse.tag.to_s == "" %>
+              No tag for this verse
+            <% else %> 
+              <i><%= verse.tag %></i>
+            <% end %>
+            <br/>
+
+            <div class="list-verse-label">Date:</div>
+              <%= verse.date.readable_inspect %> <br/>
+
+            <% if verse.content.to_s == "" %>
+            <%   content= "No content for this verse" %>
+            <% elsif verse.content.length > 30 %>
+            <%   content= simple_format "  " + h(verse.content[0,30]) + "..." %>
+            <% else %>
+            <%   content = simple_format h(verse.content) %>
+            <% end %>
+
+            <div class="list-verse-label">Content: </div>
+              <i><%= link_to(content, verse_path(verse)) %></i><br/>
+          <% end %>
+          <br/>
+        </div>
+
+      </div>
+
+<%= render :partial => "layouts/footer" %>

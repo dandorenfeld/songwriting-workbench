@@ -1,0 +1,36 @@
+<%= render :partial => "layouts/errors", :locals => { :object => @song } %>
+
+<%= render :partial => "layouts/header" %>
+
+      <div class='content'>
+
+        <h2><%= @page_title %></h2>
+
+        <form method="POST" action="/songs">
+          <br/>
+          <input type="checkbox" name="final"> Check to mark as final<br/><br/>
+
+          <div class="text-field">
+            <div class="text-field-block">Song Title:</div>
+            <input type="text" class="textbox-style" style="margin-right:155px;"
+                   name="song-title" placeholder="Not Required"
+                   value="<%= @song.title %>" size="50" maxlength="75"/>
+            Maximum characters: 2500
+            <br/>
+            <div class="textarea-field-block">Song Content:</div>
+            <textarea class="textarea-style" name="song-content"
+                      placeholder="Required" rows='20' cols='80'
+                      maxlength='2500'><%= @song.content %></textarea>
+          </div>
+
+          <br/>
+          <div class="add-edit-song-submit-field">
+            <input type="submit" name="create" value ="Create Song">
+          </div>
+          <input type="submit" name="cancel" value="Cancel">
+
+        </form>
+
+      </div>
+
+<%= render :partial => "layouts/footer" %>

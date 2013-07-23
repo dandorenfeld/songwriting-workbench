@@ -1,0 +1,50 @@
+<%= render :partial => "layouts/header" %>
+
+      <div class='content'>
+
+        <h2><%= @page_title %></h2>
+
+        <div class="list-verse">
+
+          <div class="list-verse-label">Tag:</div>
+          <% if @verse.tag.to_s == "" %>
+            No tag for this verse
+          <% else %> 
+            <i><%= @verse.tag %></i>
+          <% end %>
+          <br/>
+
+          <div class="list-verse-label">Date:</div>
+            <%= @verse.date.readable_inspect %> <br/>
+
+          <div class="list-verse-label"
+               style="margin-right:435px;">Content:</div>
+          Characters used: <i><%= @verse.content.length %></i>/750
+
+          <textarea class="textarea-style" placeholder="Required"
+                rows='20' cols='80' readonly><%= h(@verse.content) %></textarea>
+
+          <br/><br/>
+        </div>
+
+        <% if @logged_in_user %>
+          <%# ### form-method-action-get with named route %>
+          <form method="GET" action="<%= edit_verse_path(@verse) %>">
+            <div class="show-verse-submit-field">
+               <input type="submit" value ="Edit Verse">
+            </div>
+          </form>
+
+          <form method="POST" action="/verses/<%= @verse.id %>">
+            <input name="_method" type="hidden" value="DELETE">
+              <input type="submit" name="delete" value ="Delete Verse">
+          </form>
+        <% end %>
+
+        <br/><div style="margin-left:275px;">
+          <%= link_to "Return to List Verses", verses_path %>
+        </div>
+
+      </div>
+
+<%= render :partial => "layouts/footer" %>

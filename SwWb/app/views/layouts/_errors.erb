@@ -1,0 +1,12 @@
+<!-- Begin _errors.erb --> 
+<% if object.errors.size > 0 %>
+  <div class="errors">
+    Error(s):
+    <ul>
+    <% for error in object.errors.full_messages %>
+      <li><%= error %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<!-- End _errors.erb --> 

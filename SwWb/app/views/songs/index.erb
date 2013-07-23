@@ -1,0 +1,63 @@
+<%= render :partial => "layouts/header" %>
+
+      <div class='content'>
+
+        <h2><%= @page_title %></h2>
+
+        &raquo; Select content of song to view, &nbsp;
+          songs ordered by not final/final and date created.
+        <br/><br/>&emsp;&emsp;
+          <img src="/images/ladybug-larva.jpg" width="20" height="20">
+        &nbsp; Ladybug larvae image means song is not final.
+        <br/>&emsp;&emsp;
+          <img src="/images/ladybug.jpg" width="20" height="20">
+        &nbsp; Ladybug image means song has been marked final by the user.
+        <br/><br/><br/><br/>
+
+        <div class="list-song">
+          <% if @songs.empty? %>
+            No songs exist
+          <% end %>
+
+          <% for song in @songs %>
+            <div class="list-song-image">
+
+              <% unless song.final %>
+                <img src="/images/ladybug-larva.jpg" width="25" height="25">
+              <% else %>
+                <img src="/images/ladybug.jpg" width="25" height="25">
+              <% end %>
+            </div>
+
+            <div class="list-song-label">Title:</div>
+            <% if song.title.to_s == "" %>
+              No title for this song
+            <% else %> 
+              <i><%= song.title %></i>
+            <% end %>
+            <br/>
+
+            <div class="list-song-label">Date:</div>
+              <%= song.date.readable_inspect %> <br/>
+
+            <% if song.content.to_s == "" %>
+            <%   content = "No content for this song" %>
+            <% elsif song.content.length > 30 %>
+            <%   content = simple_format "  " + h(song.content[0,30]) + "..." %>
+            <% else %>
+            <%   content = simple_format h(song.content) %>
+            <% end %>
+
+            <div class="list-song-label">Content: </div>
+              <i><%= link_to(content, song_path(song)) %></i><br/><br/>
+<% if false %>
+###           This works also:
+###             <a href="/songs/<%= song.id %>"><i><%= content %></i></a><br/>
+<%end%>
+          <% end %>
+          <br/>
+        </div>
+
+      </div>
+
+<%= render :partial => "layouts/footer" %>

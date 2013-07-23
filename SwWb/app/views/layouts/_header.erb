@@ -1,0 +1,37 @@
+<!-- Begin _header.erb -->
+    <div class="whole-page">
+
+      <div class="logo-and-title">
+        <div class="logo">
+          <img src="/images/logo.jpg" alt="Logo" width="96" height="47"
+               border="2" />
+        </div>
+        <br/>
+        <div class="title">
+          <img src="/images/banner.jpg" alt="Banner" width="585"
+               height="158" border="2" />
+          <h1>SongWriting WorkBench (SWWB)</h1>
+        </div>
+        <div class="user-sign-in-out">
+          <% unless @logged_in_user %>
+            &emsp;&emsp;<a href="/login">Sign In</a>
+          <% else %>
+              &emsp;&emsp;<%= @logged_in_user.username + " - " %>
+              <a href="/logout">Sign Out</a>
+          <% end %>
+        </div>
+      </div>
+
+      <hr align='center' width='75%'>
+      <div class='main-nav-bar'>
+        <table class='main-table'>
+          <tr class='main-td'>
+            <td> <%= link_to("HOME", home_path) %> </td>
+            <td> <%= link_to("RESOURCES", resources_path) %> </td>
+            <td> <%= link_to("ABOUT SWWB", about_path) %> </td>
+            <td> <%= link_to("CONTACT SWWB", contact_path) %> </td>
+          </tr>
+        </table>
+      </div>
+      <hr align='center' width='75%'>
+<!-- End  _header.erb -->

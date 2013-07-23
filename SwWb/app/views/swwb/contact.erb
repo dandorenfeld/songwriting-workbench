@@ -1,0 +1,55 @@
+      <%# My customized handling of required fields not populated %>
+      <% if @errors.size > 0 %>
+        <div class="errors">
+          Error(s):
+          <ul>
+          <% for error in @errors %>
+            <li><%= error %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+<%= render :partial => "layouts/header" %>
+
+      <div class='content'>
+
+        <h2><%= @page_title %></h2>
+
+        <form method="POST" action="/contact_send">
+          <font color="red">*</font>&nbsp;&nbsp;Required
+          <br/><br/>
+          <div class="text-field">
+            <div class="text-field-block">Your Name:</div>
+            <input type="text" class="textbox-style" name="name"
+                   value="<%= @name %>" size="30" maxlength="30"/>
+            <font color="red">*</font>
+            <br/>
+
+            <div class="text-field-block">Your Email:</div>
+            <input type="text" class="textbox-style" name="email"
+                   value="<%= @email %>" size="30" maxlength="30"/>
+            <font color="red">*</font>
+            <br/>
+
+            <div class="text-field-block">Your Phone:</div>
+            <input type="text" class="textbox-style" name="phone"
+                   value="<%= @phone %>" size="30" maxlength="30"/>
+            <br/><br/>
+
+            <div class="textarea-field-block">Your Message:</div>
+            <textarea name="message" class="textarea-style"
+                      rows='10' cols='45'><%= @message %></textarea>
+            <font color="red" style="position:absolute;">*</font>
+          </div>
+
+          <br/>
+          <div class="contact-submit-field">
+            <input type="submit" name="send" value ="Send Message">
+          </div>
+          <input type="submit" name="cancel" value="Cancel">
+        </form>
+
+      </div>
+
+<%= render :partial => "layouts/footer" %>

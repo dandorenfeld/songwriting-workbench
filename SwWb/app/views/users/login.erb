@@ -1,0 +1,38 @@
+    <div class="whole-page">
+
+      <div class="logo-and-title">
+        <div class="logo">
+          <img src="/images/logo.jpg" alt="Logo" width="135" height="65"
+               border="2" />
+        </div>
+        <br/>
+        <div class="title">
+          <img src="/images/banner.jpg" alt="Banner" width="585"
+               height="158" border="2" />
+          <h1>SongWriting WorkBench (SWWB)</h1>
+        </div>
+      </div>
+
+      <div class="content">
+        <h2><%= @page_title %></h2>
+
+        <form method="post" action="<%= login_path %>">
+          <br/>
+          <div class="login-heading">Username: </div>
+          <input type="text" name="username" value="<%= params["username"] %>"/>
+          <br/>
+          <div class="login-heading">Password: </div>
+          <input type="password" name="password" value=""/>
+          <br/><br/>
+          <button style="margin-left:75px;">Sign In</button>
+          &emsp;&emsp;<%= link_to "Sign In as guest", login_guest_path %>
+          <br/><br/><br/><br/>
+        </form>
+
+        <div style="margin-left:75px;">
+          <%= link_to "Return to home page", home_path %>
+        </div>
+        <br/><br/><br/>
+      </div>
+
+<%= render :partial => "layouts/footer" %>

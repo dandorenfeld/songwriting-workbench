@@ -1,0 +1,67 @@
+<%= render :partial => "layouts/header" %>
+
+      <div class='content'>
+
+        <h2><%= @page_title %></h2>
+
+        <div class="list-song">
+
+          <div class="list-song-image">
+            <% if @song.final %>
+              <img src="/images/ladybug.jpg" width="25" height="25">
+            <% else %>
+              <img src="/images/ladybug-larva.jpg" width="25" height="25">
+            <% end %>
+          </div>
+
+<%# ### If I display with textarea, I can use <placeholder> and   %>
+<%# ###   I don't need a check for ""                             %>
+<%# ### Note: doing 'simple_format h()' and displaying in textare %>
+<%# ### Note:   shows the inserted html tags                      %>
+          <div class="list-song-label">Title:</div>
+          <% if @song.title.to_s == "" %>
+            No title for this song
+          <% else %> 
+            <i><%= @song.title %></i>
+          <% end %>
+          <br/>
+
+          <div class="list-song-label">Date:</div>
+            <%= @song.date.readable_inspect %> <br/>
+
+          <div class="list-song-label"
+               style="margin-right:425px;">Content:</div>
+          Characters used: <i><%= @song.content.length %></i>/2500
+
+          <textarea class="textarea-style" placeholder="Required"
+                 rows='20' cols='80' readonly><%= h(@song.content) %></textarea>
+
+          <br/><br/>
+        </div>
+
+        <% if @logged_in_user %>
+          <%# ### form-method-action-get with named route %>
+<%if false%><%# <form action="/songs/<%= @song.id %>/edit" method="GET"><%end%>
+          <form method="GET" action="<%= edit_song_path(@song) %>">
+            <div class="show-song-submit-field">
+               <input type="submit" value ="Edit Song">
+            </div>
+          </form>
+
+          <%# ### form-method-action-post with named route %>
+<%if false%><form method="POST" action="/songs/<%= @song.id %>"><%end%>
+          <form method="POST" action="<%= song_path(@song) %>">
+            <input name="_method" type="hidden" value="DELETE">
+            <input type="submit" name="delete" value ="Delete Song">
+          </form>
+        <% end %>
+
+        <br/>
+        <div style="margin-left:275px;">
+          <a href="<%= request.referrer %>">Return to Previous Page</a>
+          <br/><br/><br/>
+        </div>
+
+      </div>
+
+<%= render :partial => "layouts/footer" %>

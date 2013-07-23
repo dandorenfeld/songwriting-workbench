@@ -1,0 +1,38 @@
+<%= render :partial => "layouts/errors", :locals => { :object => @verse } %>
+
+<%= render :partial => "layouts/header" %>
+
+      <div class='content'>
+
+        <h2><%= @page_title %></h2>
+
+        <form method="POST" action="/verses/<%= @verse.id %>">
+          <input name="_method" type="hidden" value="PUT">
+
+          <br/>
+          <div class="text-field">
+            <div class="text-field-block">Verse Tag:</div>
+            <input type="text" class="textbox-style" style="margin-right:165px;"
+                   name="verse-tag" placeholder="Not Required"
+                   value="<%= @verse.tag %>" size="50" maxlength="75"/>
+            Characters used: <i><%= @verse.content.length %></i>/750
+          </div>
+
+          <div class="text-field">
+            <div class="textarea-field-block">Verse Content:</div>
+            <textarea class="textarea-style" name="verse-content"
+                      placeholder="Required" rows='20' cols='80'
+                      maxlength='750'><%= @verse.content %></textarea>
+          </div>
+
+          <br/>
+          <div class="add-edit-verse-submit-field">
+            <input type="submit" name="edit" value="Edit Complete">
+          </div>
+          <input type="submit" name="cancel" value="Cancel">
+
+        </form>
+
+      </div>
+
+<%= render :partial => "layouts/footer" %>

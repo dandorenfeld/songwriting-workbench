@@ -1,0 +1,17 @@
+<%= render :partial => "layouts/errors", :locals => { :object => @title } %>
+
+<%= render :partial => "layouts/header" %>
+
+      <div class='content'>
+        <h2><%= @page_title %></h2>
+        
+        <form method="POST" action="/titles/<%= @title.id %>">
+          <input name="_method" type="hidden" value="PUT">
+
+<%= render :partial => "modify_title", :locals => { :padding => "180px;",
+           :submit_name => "edit", :submit_value => "Edit Complete" } %>
+
+        </form>
+      </div>
+
+<%= render :partial => "layouts/footer" %>

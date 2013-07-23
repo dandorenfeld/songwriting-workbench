@@ -1,0 +1,58 @@
+<%= render :partial => "layouts/errors", :locals => { :object => @song } %>
+
+<%= render :partial => "layouts/header" %>
+
+      <div class='content'>
+
+        <h2><%= @page_title %></h2>
+
+        <%# ### form-method-action-post(put) with named route %>
+<%if false%><form method="POST" action="/songs/<%= @song.id %>"><%end%>
+        <form method="POST" action="<%= song_path(@song) %>">
+          <input name="_method" type="hidden" value="PUT">
+
+          <br/>
+          <% if @song.final %>
+            <% final          = "checked" %>
+            <% textarea_state = "readonly" %>
+          <% else %>
+            <% final          = "" %>
+            <% textarea_state = "" %>
+          <% end %>
+
+          <%# We want an immediate effect if start state is final %>
+          <% if final != "" %>
+            <input type="checkbox" name="final" <%= final %>
+              onclick="document.getElementById('song-content').readOnly=false"/>
+                Uncheck to edit, check to mark as final
+          <% else %>
+            <input type="checkbox" name="final" <%= final %>>
+              Check to mark as final
+          <% end %>
+          <br/><br/>
+
+          <div class="text-field">
+            <div class="text-field-block">Song Title:</div>
+            <input type="text" class="textbox-style" style="margin-right:165px;"
+                   name="song-title" placeholder="Not Required"
+                   value="<%= @song.title %>" size="50" maxlength="75"/>
+            Characters used: <i><%= @song.content.length %></i>/2500
+            <br/>
+            <div class="textarea-field-block">Song Content:</div>
+            <textarea id="song-content" class="textarea-style"
+                      name="song-content" placeholder="Required"
+                      rows='20' cols='80' maxlength='2500'
+                      <%= textarea_state %>><%= @song.content %></textarea>
+          </div>
+
+          <br/>
+          <div class="add-edit-song-submit-field">
+            <input type="submit" name="edit" value="Edit Complete">
+          </div>
+          <input type="submit" name="cancel" value="Cancel">
+
+        </form>
+
+      </div>
+
+<%= render :partial => "layouts/footer" %>

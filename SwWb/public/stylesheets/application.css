@@ -1,0 +1,218 @@
+body {
+    position: relative;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #333333;
+}
+
+p {
+    color: black;
+    font-family: Times;
+    font-size: 16px;
+}
+
+h1 {
+    position: absolute;
+    margin-top: -165px;
+    margin-left: 3%;
+    color: FireBrick;
+}
+
+h2 {
+    margin-left: 38%;
+    color: FireBrick;
+}
+
+
+div.whole-page {
+    position: relative;
+    background-color: BlanchedAlmond;
+}
+
+div.logo-and-title {
+    height: 225px;
+    background-color: Azure;
+}
+
+div.logo {
+    position: absolute;
+    margin-top: 7%;
+    margin-left: 4%;
+    color: FireBrick;
+}
+
+div.title {
+    float: left;      /* Use for Sign In/Sign Out positioning */
+    position: center;
+    margin-left: 19%;
+}
+
+div.user-sign-in-out {
+    font-size: 13px;
+}
+
+div.footer-logo-and-detail {
+    height: 60px;
+    background-color: Azure;
+}
+
+div.footer-logo {
+    float: left;
+    margin-left: 1%;
+    padding-right: 3px;
+    color: FireBrick;
+}
+
+div.footer-detail {
+}
+
+
+div.main-nav-bar {
+    position: center;
+}
+
+table.main-table {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+}
+
+tr.main-td {
+    text-align: center;
+    font-size: 11pt;
+}
+
+
+div.content {
+    margin-left: 10%;
+}
+
+
+div.current-song-heading-and-button {
+}
+
+div.current-song-heading {
+}
+
+div.current-song {
+    margin-left: 1%;
+}
+
+
+div.list-song-verse-links {
+}
+
+table.list-song-verse-table {
+    margin-left: 250px;
+    margin-right: auto;
+    width: 550px;
+}
+
+div.list-song-verse-td {
+    text-align: left;
+}
+
+
+div.recent-songs-heading-and-links {
+}
+
+div.recent-songs-heading {
+    width: 600px;
+    display: inline-block;
+}
+
+div.recent-songs {
+    margin-left: 1%;
+}
+
+div.list-title-label {
+    width: 250px;
+    display: inline-block;
+}
+
+div.text-field {
+    font-size: 11pt;
+}
+
+div.text-field-block {
+    width: 95px;
+    display: inline-block;
+}
+
+div.textarea-field-block {
+    width: 95px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+div.contact-submit-field {
+    float: left;
+    margin-left: 100px;
+    padding-right: 230px;
+}
+
+div.show-song-submit-field, div.show-verse-submit-field {
+    float: left;
+    padding-right: 515px;
+}
+
+div.add-edit-song-submit-field, div.add-edit-verse-submit-field {
+    float: left;
+    margin-left: 105px;
+    padding-right: 505px;
+}
+
+div.add-edit-song-title-submit-field {
+    float: left;
+    margin-left: 80px;
+}
+
+
+div.list-song, div.list-verse {
+    margin-left: 1%;
+}
+
+div.list-song-label, div.list-verse-label {
+    width: 60px;
+    display: inline-block;
+}
+
+
+table.song-title-table {
+}
+
+div.song-title-tr {
+}
+
+
+input.textbox-style {
+    font-size: 10pt;
+}
+
+textarea.textarea-style {
+    font-size: 10pt;
+}
+
+
+div.login-heading {
+    width: 70px;
+    display: inline-block;
+}
+
+div.flash-success {
+  background-color: #dff0d8;
+  border: 1px #d6e9c6 solid;
+  color: #468847;
+  padding: 15px;
+}
+
+div.flash-error, div.errors {
+  background-color: #f2dede;
+  border: 1px #eed3d7 solid;
+  color: #b94a48;
+  padding: 15px;
+}
+

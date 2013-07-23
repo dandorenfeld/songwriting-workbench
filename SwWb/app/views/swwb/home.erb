@@ -1,0 +1,114 @@
+<%= render({ :partial => "layouts/header" }) %>
+
+      <script>
+        function autoGenerate()
+        {
+          alert("Auto generate a hit song\n\n\
+Not implemented - But if it was...\n\n\
+I envision the capability of generating hit songs, with a catch - \
+you would have to accept the disclaimer provided \
+which may change your life forever!\n\n\
+Like episodes from the Twilight Zone, being granted what you desire \
+comes with a price.\n\n\
+And, developing this feature would surely change me forever!\n")
+        }
+      </script>
+
+      <div class='content'>
+
+        <br/><br/>
+        <div class="more-info" style="font-size:14px;">
+          &raquo; Please see ABOUT SWWB for information about this site.
+        </div>
+
+        <br/><br/>
+        <div class="current-song-heading-and-button">
+          <div class="current-song-heading">
+
+            <% if @song1 %>
+              <% if @logged_in_user %>
+                <form method="GET" action="<%= edit_song_path(@song1) %>">
+                    <u>Current Song</u>
+                    &nbsp; <button>Edit</button> <br/>
+                </form>
+              <% else %>
+                <form method="GET" action="<%= song_path(@song1) %>">
+                    <u>Current Song</u>
+                    &nbsp; <button>Show</button> <br/>
+                </form>
+              <% end %>
+            <% else %>
+                <u>Current Song</u>
+            <% end %>
+
+            <%
+              if @song1
+               if @song1.content.length > 30
+                 content = simple_format h(@song1.content[0,30]) + "..."
+               else
+                 content = simple_format h(@song1.content) end
+             end
+           %>
+
+            <div class="current-song">
+              <% if @song1.nil? %>
+                No current song - try List Songs
+              <% else %>
+                <div class="list-song-label">Title:</div>
+                <% if @song1.title.to_s == "" %>
+                  No title for this song
+                <% else %>
+                  <i><%= @song1.title %></i>
+                <% end %>
+
+                <br/>
+                <div class="list-song-label">Content:</div>
+                  <i><%= content %></i> <br/>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="list-song-verse-links">
+          <table class="list-song-verse-table">
+            <tr class="list-song-verse-td">
+              <td> <%= link_to "Add Song", new_song_path %>
+              <td> <%= link_to "List Songs", songs_path %>
+              <td> <%= link_to "Song Titles", titles_path %>
+              <td style="line-height:60px;" colspan=2>&nbsp;</td>
+            </tr>
+            <tr class="list-song-verse-td">
+              <td> <a href="/verses/new">Add Verse</a> </td>
+              <td> <a href="/verses">List Verses</a> </td>
+            </tr>
+          </table>
+        </div>
+
+        <br/><br/>
+        <div class="recent-songs-heading-and-links">
+
+          <div class="recent-songs-heading">
+            <u>Recently Modified Songs</u>
+          </div>
+            <input type="button" style="color:green; font-size:18px;"
+                   onclick="autoGenerate()"
+                   value="Auto Generate Song - Press Me" />
+
+          <div class="recent-songs">
+            <% if @song2.nil? %>
+              No recent songs - try List Songs
+            <% else %>
+<%= render :partial => "make_song_current", :locals => { :song => @song2 } %>
+              <% if @song3 %>
+<%= render :partial => "make_song_current", :locals => { :song => @song3 } %>
+                <% if @song4 %>
+<%= render :partial => "make_song_current", :locals => { :song => @song4 } %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+
+<%= render({ :partial => "layouts/footer" }) %>

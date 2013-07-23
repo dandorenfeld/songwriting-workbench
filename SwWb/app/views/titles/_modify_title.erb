@@ -1,0 +1,17 @@
+<!-- Begin _modify_title.erb -->
+  <br/><br/>
+  <div class="text-field">
+    <div style="width:75px; display:inline-block;">Song Title:</div>
+    <input type="text" class="textbox-style"
+           name="song-title" placeholder="Required"
+           value="<%= @title.title %>" size="50" maxlength="75"/>
+  </div>
+  <br/>
+  <div class="add-edit-song-title-submit-field"
+       style="padding-right:<%= padding %>">
+    <input type="submit" name="<%= submit_name %>" value="<%= submit_value %>">
+  </div>
+  <input type="submit" name="cancel" value="Cancel">
+
+  <br/><br/><br/><br/>
+<!-- End _modify_title.erb -->
