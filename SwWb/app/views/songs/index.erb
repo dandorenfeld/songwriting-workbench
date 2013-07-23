@@ -38,7 +38,7 @@
             <br/>
 
             <div class="list-song-label">Date:</div>
-              <%= song.date.readable_inspect %> <br/>
+              <%= song.date.strftime("%B %d, %Y - %A") %> <br/>
 
             <% if song.content.to_s == "" %>
             <%   content = "No content for this song" %>

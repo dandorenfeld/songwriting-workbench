@@ -67,7 +67,8 @@ class SwwbController < ApplicationController
 
       if @errors.size == 0
         subject  = ""
-        subject += "Message from SWWB - #{Date.today.readable_inspect}"
+        subject +=
+          "Message from SWWB - #{Date.today.strftime("%B %d, %Y - %A")}"
         body  = ""
         body += "From:       #{@name}\n"
         body += "Email:      #{@email}\n"

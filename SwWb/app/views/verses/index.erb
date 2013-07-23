@@ -23,7 +23,7 @@
             <br/>
 
             <div class="list-verse-label">Date:</div>
-              <%= verse.date.readable_inspect %> <br/>
+              <%= verse.date.strftime("%B %d, %Y - %A") %> <br/>
 
             <% if verse.content.to_s == "" %>
             <%   content= "No content for this verse" %>

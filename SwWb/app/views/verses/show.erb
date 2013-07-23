@@ -15,7 +15,7 @@
           <br/>
 
           <div class="list-verse-label">Date:</div>
-            <%= @verse.date.readable_inspect %> <br/>
+            <%= @verse.date.strftime("%B %d, %Y - %A") %> <br/>
 
           <div class="list-verse-label"
                style="margin-right:435px;">Content:</div>

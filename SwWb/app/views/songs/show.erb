@@ -26,8 +26,12 @@
           <% end %>
           <br/>
 
+          <%# ### @song.date => "2013-03-31"                        %>
+          <%# ### @song.date.readable_inspect => "Sun, 31 Mar 2013" %>
+          <%# ### @song.date.strftime("%B %d, %Y - %A") =>          %>
+          <%# ###   "March 31, 2013 - Sunday"                       %>
           <div class="list-song-label">Date:</div>
-            <%= @song.date.readable_inspect %> <br/>
+            <%= @song.date.strftime("%B %d, %Y - %A") %> <br/>
 
           <div class="list-song-label"
                style="margin-right:425px;">Content:</div>
