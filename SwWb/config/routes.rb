@@ -21,6 +21,4 @@ WebApp::Application.routes.draw do
     ###   resources :songs, :only => [:index, :create, :new, :edit, :show,
     ###                               :update, :destroy]
 
-    get "/countdown" => "swwb#countdown", :as => "countdown"
-
 end

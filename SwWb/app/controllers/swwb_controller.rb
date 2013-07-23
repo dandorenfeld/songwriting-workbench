@@ -1,13 +1,5 @@
 class SwwbController < ApplicationController
 
-    # Note: Constants cannot be assigned inside of a method
-    ONE_SECOND = 1
-    ONE_MINUTE = 60 * ONE_SECOND   #     60 seconds
-    ONE_HOUR   = 60 * ONE_MINUTE   #  3,600 seconds
-    ONE_DAY    = 24 * ONE_HOUR     # 86,400 seconds
-    FIVE_PM    = 17 * ONE_HOUR     # 61,200 seconds (since midnight)
-
-
     ### See ./application_controller.rb for before_filter to retrieve
     ###   @logged_in_user
 
@@ -95,52 +87,6 @@ class SwwbController < ApplicationController
         flash[:error] = "Your form is incomplete"
         render :action => "contact"
       end
-    end
-
-    def countdown
-      # Calculate the days
-      ### Todo: Use MST, MDT to ensure the proper day
-      @days_gross = (DateTime.new(2014,9,30) - Date.today).to_i
-      @days_left = @days_gross - (@days_gross / 7 * 2) 
-      @days_left = @days_left - 10   # Assume 10 holidays for now
-
-=begin
-      ### Note: time_now.utc? returned false when running from Heroku
-      ###   irb(main):004:0> Time.now.zone
-      ###     => "UTC"
-      ###   irb(main):005:0> Time.now.utc?
-      ###     => false
-      ###
-      # Calculate the the partial day
-      #   If we are at Coordinated Universal Time (UTC) then adjust the time
-      time_now = Time.now
-      if time_now.utc?
-        # This works also:
-        #   time_zone = TZInfo::Timezone.get('America/Denver')
-        #   current_period = time_zone.current_period
-        #   time_now += current_period.utc_total_offset
-        time_now +=
-          TZInfo::Timezone.get('America/Denver').current_period.utc_total_offset
-      end
-=end
-      # Calculate the the partial day
-      time_now = Time.now.in_time_zone("Mountain Time (US & Canada)")
-      @time_now_formatted = time_now.strftime("%A - %B %d, %Y; %I:%M%p %Z")
-      @hours_left   = 0
-      @minutes_left = 0
-      @seconds_left = 0
-      unless time_now.saturday? || time_now.sunday?
-        # The end of the day is 5:00 PM today
-        partial_day = FIVE_PM - time_now.seconds_since_midnight
-        if partial_day > 0
-          # Since we are using Time, we need to truncate (remove) the decimal
-          @hours_left   =  (partial_day / ONE_HOUR).truncate
-          @minutes_left = ((partial_day % ONE_HOUR) / ONE_MINUTE).truncate
-          @seconds_left = ((partial_day % ONE_HOUR) % ONE_MINUTE).truncate
-        end
-      end
-
-      render :action => "countdown"
     end
 
 end
