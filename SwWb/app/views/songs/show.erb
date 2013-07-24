@@ -30,8 +30,9 @@
           <%# ### @song.date.readable_inspect => "Sun, 31 Mar 2013" %>
           <%# ### @song.date.strftime("%B %d, %Y - %A") =>          %>
           <%# ###   "March 31, 2013 - Sunday"                       %>
+          <%# ###   Note: Use "%-d" to display 1-9 instead of 01-09 %>
           <div class="list-song-label">Date:</div>
-            <%= @song.date.strftime("%B %d, %Y - %A") %> <br/>
+            <%= @song.date.strftime("%B %-d, %Y - %A") %> <br/>
 
           <div class="list-song-label"
                style="margin-right:425px;">Content:</div>
