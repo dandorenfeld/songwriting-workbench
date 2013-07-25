@@ -1,5 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
+# See http://github.com/cantino/huginn/issues/53 at the bottom
+require "rake/dsl_definition"
+
 # Pick the frameworks you want:
 require "active_record/railtie"
 require "action_controller/railtie"
